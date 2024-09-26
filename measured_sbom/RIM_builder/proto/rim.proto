@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+message RIMManifest {
+  string tag_id = 1; // GUID for RIM instance
+  string version = 2; // Version of the RIM
+  string platform_manufacturer_str = 3; // Name of platform manufacturer
+  string platform_manufacturer_id = 4; // Platform manufacturer unique identifier
+  string platform_model = 5; // Manufacturer-specific identifier
+  string platform_version = 6; // Manufacturer-specific version identifier (optional)
+  string firmware_manufacturer_str = 7; // Firmware manufacturer name (optional)
+  string firmware_manufacturer_id = 8; // Firmware manufacturer unique identifier (optional)
+  string firmware_model = 9; // Firmware model (optional)
+  string firmware_version = 10; // Firmware version (optional)
+  
+  // Meta information from the manifest
+  MetaElement meta = 11;
+  
+  // Payload can be a file, directory, process, or resource with its associated hash
+  repeated PayloadElement payload = 12;
+  
+  // Digital signature of the RIM
+  Signature signature = 13;
+}
+
+message MetaElement {
+  string product = 1; // Product name
+  string colloquial_version = 2; // Human-readable version string
+  string revision = 3; // Revision of the RIM
+  string binding_spec = 4; // Reference to binding specification
+  string binding_spec_version = 5; // Version of the binding specification
+  string platform_configuration_uri = 6; // URI for platform configuration
+}
+
+message PayloadElement {
+  string name = 1; // Name of the payload item
+  string version = 2; // Version of the payload item
+  int64 size = 3; // Size of the payload item
+  string hash = 4; // SHA-256 hash of the payload item
+}
+
+message Signature {
+  string algorithm = 1; // Algorithm used for the signature
+  string key_info_reference = 2; // Reference to the key used for signing
+  string digest = 3; // Digest of the RIM
+  string signature_value = 4; // The signature itself
+}
