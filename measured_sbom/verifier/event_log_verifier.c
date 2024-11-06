@@ -77,7 +77,8 @@ static bool interpret_event(const TCG_EVENT *event, const RIM_Payload *rim_paylo
 }
 
 /**
- * Processes each event in the log, verifying digests sequentially.
+ * Cast an event type on to event log and keep shifting to find more events. 
+ * TODO: Need to study possbility extra bytes and how this logic is resiliant to it.
  * Returns true if all events are successfully verified, false otherwise.
  */
 static bool process_event_log(const BYTE *event_log, size_t log_size, const RIM_Payload *rim_payload) {
@@ -99,6 +100,8 @@ static bool process_event_log(const BYTE *event_log, size_t log_size, const RIM_
         }
 
         const TCG_EVENT *event = (const TCG_EVENT *)(event_log + offset);
+        // Event size is not known from type of event. there is a field that needs to be
+        // raed to determine that. 
         size_t event_size = sizeof(TCG_EVENT) + event->eventDataSize;
 
         // Validate event size
@@ -108,7 +111,8 @@ static bool process_event_log(const BYTE *event_log, size_t log_size, const RIM_
             break;
         }
 
-        // Verify the event against the RIM entry
+        // At this point we have isolated an event and will be send to this function 
+        // for verification against the RIM. 
         if (!interpret_event(event, rim_payload, event_num)) {
             all_verified = false;
         }
@@ -124,6 +128,7 @@ static bool process_event_log(const BYTE *event_log, size_t log_size, const RIM_
 /**
  * Loads an event log from a binary file, processes each event, and verifies digests.
  * Returns true if all events pass verification, false otherwise.
+ * This is expecting event log in PC STD format, not Canoncial Event Log (CEL).
  */
 bool parse_event_log_from_file(const char *filename, const RIM_Payload *rim_payload) {
     if (!filename || !rim_payload) {
