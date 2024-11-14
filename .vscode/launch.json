@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "/workspaces/attest-verify/measured_sbom/event_log_parsing/TCGEventLogVerification/bin/Debug/net8.0/TCGEventLogVerification.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": true,
+            "console": "internalConsole"
+        }
+    ]
+}
