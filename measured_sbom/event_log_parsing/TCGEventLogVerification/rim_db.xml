@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rimroot xmlns="http://standards.iso.org/iso/19770/-2/2015/schema.xsd">
+  <SoftwareIdentity>
+    <Entity name="Example Company" regid="example.com" role="tagCreator"/>
+    <Payload>
+      <Directory>
+        <File name="POST_Code_Module" size="1024" SHA256:hash="A314FC2DC663AE7A6B6BC6787594057396E6B3F569CD50FD5DDB4D1BBAFD2B6A"/>
+      </Directory>
+    </Payload>
+  </SoftwareIdentity>
+  <SoftwareIdentity>
+    <Entity name="Example Company" regid="example.com" role="tagCreator"/>
+    <Payload>
+      <Directory>
+        <File name="SRTM_Module" size="2048" SHA256:hash="532EAABD9574880DBF76B9B8CC00832C20A6EC113D682299550D7A6E0F345E25"/>
+      </Directory>
+    </Payload>
+  </SoftwareIdentity>
+  <SoftwareIdentity>
+    <Entity name="Example Company" regid="example.com" role="tagCreator"/>
+    <Payload>
+      <Directory>
+        <File name="HCRTM_Module" size="4096" SHA256:hash="8A4C98225D855D388B42FD8AA4FA1646CFAC666E43FD6A7B950BB3E0B12134AA"/>
+      </Directory>
+    </Payload>
+  </SoftwareIdentity>
+  <SoftwareIdentity>
+    <Entity name="Example Company" regid="example.com" role="tagCreator"/>
+    <Variables>
+      <Variable name="SecureBoot" SHA256:hash="C9D4E2366ECA49F9F8E51E22EFB2F8A7F0D5D12FBB4F2D9C2A7D6D5C6B3A8E2D"/>
+    </Variables>
+  </SoftwareIdentity>
+  <SoftwareIdentity>
+    <Entity name="Example Company" regid="example.com" role="tagCreator"/>
+    <Variables>
+      <Variable name="BootOrder" SHA256:hash="4B6F9AEE8A5B7C1D3E4F5A6B7C8D9E0FA1B2C3D4E5F6A7B8C9D0E1F2A3B4C5D6"/>
+    </Variables>
+  </SoftwareIdentity>
+</rimroot>
